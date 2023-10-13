@@ -3,10 +3,15 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE-Edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+		<!-- title -->
 		<title>Mi Pagina Web</title>
+
+		<!-- Styles-->
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
+	
 	<body>
-		
 		<form method="POST" action="" >
 		    <div>
 		    	<div>
@@ -37,65 +42,11 @@
 		            </table>
 		        </div>
 		    </div>
+			<input type="hidden" id="ruta" name="num_mesero" value="<?php echo $Server; ?>">
 		</form>
-	<input type="hidden" id="ruta" name="num_mesero" value="<?php echo $Server; ?>">
+
+		<script src="assets/js/ipapi.js"></script>
+		<script src="assets/js/serviceDportenis.js"></script>
 	</body>
-	<style>
-		.table{
-			padding: 8px;
-			border: 1px solid #ddd;        
-			border-collapse: collapse;
-			font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-			font-size: 14px;
-
-		}
-		.encabezado {  		
-		    padding: 8px;
-		    margin-bottom: 1rem;          
-		    border-radius: 1px;        
-		    background-color: #3DACB6;
-			color: #FFFFFF;
-		}
-		.filas{
-			border: 1px solid #f4f4f4;
-			padding: 8px;
-		}
-	</style>
 </html>
-<script>
-
-	CallApiIp();
-
-	function CallApiIp(){
-
-		rRegion = "";
-		rIp = "";
-		var requestOptions = {
-		  method: 'GET',
-		  redirect: 'follow'
-		};
-
-		fetch("https://ipapi.co/json", requestOptions)
-		  .then(response => response.json())
-		  .then(result => {
-		  	rRegion = result.city + " " + result.region + ", " + result.country_name + ".";
-		  	rIp = result.ip;
-		  	document.querySelector("#idRegion").innerHTML = rRegion;
-		  	document.querySelector("#idIp").innerHTML = rIp;
-		  })
-		  .catch(error => console.log('error', error));
-	}
-
-	function CallApiRest()
-	{
-		FilasRespuesta = "";
-
-		FilasRespuesta 	+= 	"<tr>" +
-		        				"<td class = 'filas'>avion</td>" +
-		            			"<td class = 'filas'>grande</td>" +
-		            			"<td class = 'filas'>verde</td>" +
-		            		"</tr>";
-	    document.querySelector("#filaRespuesta").innerHTML = FilasRespuesta;
-
-	}
-</script> 
+ 
